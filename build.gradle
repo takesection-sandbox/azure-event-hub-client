@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+springBoot {
+    executable = true
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+
+    compile 'com.microsoft.eventhubs.client:eventhubs-client:1.0'
+	compile 'com.microsoft.azure.iothub-java-client:iothub-java-service-client:1.0.4'
+	
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
